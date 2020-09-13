@@ -11,7 +11,6 @@ async function signup(req, res) {
     // TODO: Send back a JWT instead of the user
     res.json(user);
   } catch (err) {
-    // Probably a duplicate email
-    res.status(400).json(err);
+    res.status(400).send({'err': err.errmsg});
   }
 }

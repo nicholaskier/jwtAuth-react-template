@@ -7,11 +7,15 @@ function signup(user) {
     body: JSON.stringify(user)
   })
   .then(res => {
-    if (res.ok) return res.json();
-    // Probably a duplicate email
-    throw new Error('Email already taken!');
+    console.log(res, '<-- response object')
+    return res.json();
   })
-  .then(data => data);
+  .then(json => {
+    if(json.token) return json;
+    console.log(json, '<-- the error')
+    throw new Error(`${json.err}`)
+  })
+  .then(data => data)
 }
 
 export default {
