@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
-import Users from "../Users/Users";
 import "./App.css";
 
 class App extends Component {
+  state = {};
+
   render() {
-    const { user } = this.state;
     return (
       <>
         <NavBar user={this.state.user} handleLogout={this.handleLogout} />
@@ -40,21 +40,6 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           )}
-        />
-        <Route
-          exact
-          path="/users"
-          render={({ history }) =>
-            user ? (
-              <Users
-                history={history}
-                handleSignupOrLogin={this.handleSignupOrLogin}
-                user={user}
-              />
-            ) : (
-              <Redirect to="/login" />
-            )
-          }
         />
       </>
     );

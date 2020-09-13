@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./LoginPage.css";
-import authService from "../../services/authService";
+import "./Login.css";
 
 class LoginPage extends Component {
   state = {
@@ -17,19 +16,12 @@ class LoginPage extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await authService.login(this.state);
-      this.props.handleSignupOrLogin();
-      this.props.history.push("/");
-    } catch (err) {
-      alert("Invalid Credentials!");
-    }
   };
 
   render() {
     const {email, pw} = this.state
     return (
-      <div className="Login">
+      <main className="Login">
         <h3>Log In</h3>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
           <input
@@ -55,7 +47,7 @@ class LoginPage extends Component {
             Cancel
           </Link>
         </form>
-      </div>
+      </main>
     );
   }
 }
