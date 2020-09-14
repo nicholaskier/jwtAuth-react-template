@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+        <NavBar user={this.state.user} />
         <Route
           exact
           path="/"
@@ -27,7 +27,6 @@ class App extends Component {
           render={({ history }) => (
             <Signup
               history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
             />
           )}
         />
@@ -37,7 +36,6 @@ class App extends Component {
           render={({ history }) => (
             <Login
               history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
             />
           )}
         />
