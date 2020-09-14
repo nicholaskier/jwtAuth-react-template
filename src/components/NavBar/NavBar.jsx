@@ -23,8 +23,8 @@ const NavBar = ({ user, handleLogout }) => {
           </div>
         </nav>
       }
-      </>
-      )
+    </>
+  )
 }
 
 export default NavBar;
