@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const NavBar = ({ user, handleLogout }) => {
     return (
@@ -7,8 +8,8 @@ const NavBar = ({ user, handleLogout }) => {
         <nav>
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="right">
-              <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
-              {/* <li><a href="/users" className="nav-link">Users</a></li> */}
+              <li className="nav-link">Welcome, {user.name}</li>
+              {/* <li><Link to="/users" className="nav-link">Users</Link></li> */}
             </ul>
           </div>
         </nav>
@@ -16,9 +17,9 @@ const NavBar = ({ user, handleLogout }) => {
         <nav>
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="right">
-              <li><a href="/login" className="nav-link">Log In</a></li>
-              {/* <li><a href="/users" className="nav-link">Users</a></li> */}
-              <li><a href="/signup" className="nav-link">Sign Up</a></li>
+              <li><Link to="/login" className="nav-link">Log In</Link></li>
+              {/* <li><Link to="/users" className="nav-link">Users</Link></li> */}
+              <li><Link to="/signup" className="nav-link">Sign Up</Link></li>
             </ul>
           </div>
         </nav>
