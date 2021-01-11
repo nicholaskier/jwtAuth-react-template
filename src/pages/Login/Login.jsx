@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import authService from "../../services/authService"
 import "./Login.css";
 
 class LoginPage extends Component {
   state = {
     email: "",
     pw: "",
+    message: ""
   };
 
   handleChange = (e) => {
@@ -15,9 +17,20 @@ class LoginPage extends Component {
   };
 
   handleSubmit = async (e) => {
+    const { history, handleSignupOrLogin } = this.props;
     e.preventDefault();
+    try {
+      await authService.login(this.state);
+      handleSignupOrLogin();
+      history.push("/");
+    } catch (err) {
+      this.updateMessage(err.message);
+    }
   };
 
+  updateMessage = (msg) => {
+   this.setState({message: msg})
+  }
   render() {
     const {email, pw} = this.state
     return (
@@ -47,6 +60,7 @@ class LoginPage extends Component {
             Cancel
           </Link>
         </form>
+        <p>{this.state.message}</p>
       </main>
     );
   }
